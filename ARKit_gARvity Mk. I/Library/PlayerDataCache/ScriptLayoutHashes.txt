@@ -1,6 +1,6 @@
 iOS
 SceneListBegin?
-Assets/UnityARKitPlugin/ARKitRemote/UnityARKitRemote.unity
+Assets/UnityARKitPlugin/Examples/UnityARKitScene/UnityARKitScene.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:UnityEngine.XR.iOS.UnityARKitControl
 12096ddf91bc99172a48b0419861fd00 Assembly-CSharp.dll:.PointCloudParticleExample
