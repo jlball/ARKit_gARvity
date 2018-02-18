@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlanetSpawnerOnCamera : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
     public Rigidbody rbAttractor;
     public float offset = 10.0f;
     public float debugVel = 10.0f;
+    public Transform sunParent;
+    public Slider scaleSlider;
 
     private bool touchLock = false;
     private GameObject planetoid;
@@ -33,7 +36,7 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
         if(Input.touchCount > 0) 
         {
 
-                touch = Input.GetTouch(0); 
+            touch = Input.GetTouch(0); 
 
             switch (touch.phase)
             {
@@ -69,7 +72,7 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
         planetoid = Instantiate(planetoidPrefab, spawnPosition, transform.rotation);
 
         //Makes the new Planetoid a child of the ImageTarget object so it is rendered in the AR scene
-        //planetoid.transform.SetParent(ImageTarget);
+        planetoid.transform.SetParent(sunParent);
 
         //Access the Gravity script of the newly spawned planet and set the Attractor Rigidbody to the "Sun" GameObject
         planetoid.GetComponent<Gravity>().rbAttractor = rbAttractor;
@@ -79,6 +82,8 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
 
         //Set the intensity of the planetoids initial velocity to the change in Y of the touch position
         planetoid.GetComponent<InitalVelocity>().forceIntensity = initVel;
+
+        planetoid.GetComponent<Gravity>().scaleSlider = scaleSlider;
 
     }
 }
