@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace UnityEngine.XR.iOS
 {
 	public class UnityARGeneratePlane : MonoBehaviour
 	{
 		public GameObject planePrefab;
+        public Button freezeSun;
+
         private UnityARAnchorManager unityARAnchorManager;
 
 		// Use this for initialization
 		void Start () {
             unityARAnchorManager = new UnityARAnchorManager();
 			UnityARUtility.InitializePlanePrefab (planePrefab);
+
+            Button btn = freezeSun.GetComponent<Button>();
+            btn.onClick.AddListener(TaskOnClick);
+
 		}
 
         void OnDestroy()
@@ -27,6 +34,12 @@ namespace UnityEngine.XR.iOS
                 //GUI.Box (new Rect (100, 100, 800, 60), string.Format ("Center: x:{0}, y:{1}, z:{2}", ap.center.x, ap.center.y, ap.center.z));
                 //GUI.Box(new Rect(100, 200, 800, 60), string.Format ("Extent: x:{0}, y:{1}, z:{2}", ap.extent.x, ap.extent.y, ap.extent.z));
             }
+        }
+
+        void TaskOnClick()
+        {
+            unityARAnchorManager.Destroy();
+            gameObject.SetActive(false);
         }
 	}
 }

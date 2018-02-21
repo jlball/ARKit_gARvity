@@ -12,12 +12,16 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
     public float debugVel = 10.0f;
     public Transform sunParent;
     public Slider scaleSlider;
+    public Text initialVelocityMeter;
+    public float meterOffset = 50.0f;
 
     private bool touchLock = false;
     private GameObject planetoid;
     private Vector2 initialTouchPosition;
     private Vector3 spawnPosition;
     private float touchDeltaY;
+    private float touchDeltaX;
+    private float initialVelocity;
     private Touch touch;
 
     // Update is called once per frame
@@ -53,13 +57,23 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
 
                 case TouchPhase.Moved:
                     touchDeltaY = initialTouchPosition.y - touch.position.y;
-                    Debug.Log((touchDeltaY)); 
+                    touchDeltaX = initialTouchPosition.x - touch.position.x;
+
+                    float touchDeltaSum = Mathf.Pow(touchDeltaX, 2) + Mathf.Pow(touchDeltaY, 2);
+                    initialVelocity = Mathf.Sqrt(touchDeltaSum);
+
+                    initialVelocityMeter.text = initialVelocity.ToString("0000");
+                    initialVelocityMeter.rectTransform.position = new Vector3(touch.position.x + meterOffset, touch.position.y + meterOffset, initialVelocityMeter.rectTransform.position.z); 
+
+                
 
                     break;
 
+
+
                 case TouchPhase.Ended:
-                    
-                    SpawnPlanetoid(Mathf.Abs(touchDeltaY / 100.0f));
+
+                    SpawnPlanetoid(initialVelocity / 250.0f);
 
                     touchLock = false;
                  break;

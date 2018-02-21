@@ -8,7 +8,7 @@ public class Gravity : MonoBehaviour {
     public Rigidbody rbAttractor;
     private Rigidbody rbLocal;
     private float rSquared;
-    public float forceScale;
+    public float gravitationalConstant;
     public Slider scaleSlider;
     private float scale;
 
@@ -19,6 +19,8 @@ public class Gravity : MonoBehaviour {
         transform.localScale = new Vector3(scale, scale, scale);
 
         GetComponent<TrailRenderer>().startWidth = scale;
+
+        rbLocal.mass = Mathf.Pow(scale, 3);
 	}
 	
 	// Update is called once per frame
@@ -31,8 +33,11 @@ public class Gravity : MonoBehaviour {
         rSquared = rSquared * rSquared;
         //Debug.Log(rSquared);
 
+        //Calculates the numerator of Newton's law of gravitiation (G * M * m)
+        float numerator = gravitationalConstant * rbLocal.mass * rbAttractor.mass;
+
         // Calcuates and applies a force in the direction of the vector between the two objects divided by the square of the distance
-        float forceScaleCalculated = forceScale / rSquared;
+        float forceScaleCalculated = numerator / rSquared;
 
         rbLocal.AddForce(-directionOfForce * forceScaleCalculated);
 

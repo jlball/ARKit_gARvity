@@ -21,7 +21,7 @@ namespace UnityEngine.XR.iOS
 
 
         private bool sunPlaced = false;
-
+        private Rigidbody rb;
 
         bool HitTestWithResultType(ARPoint point, ARHitTestResultType resultTypes)
         {
@@ -44,6 +44,8 @@ namespace UnityEngine.XR.iOS
 
             Button btn = sunPlacerButton.GetComponent<Button>();
             btn.onClick.AddListener(TaskOnClick);
+
+            rb = GetComponent<Rigidbody>();
         }
 
         // Update is called once per frame
@@ -88,6 +90,8 @@ namespace UnityEngine.XR.iOS
             if (!sunPlaced)
             {
                 transform.localScale = new Vector3(sizeSlider.value, sizeSlider.value, sizeSlider.value);
+                rb.mass = Mathf.Pow(sizeSlider.value, 3);
+
                 transform.position = new Vector3(m_HitTransform.position.x, m_HitTransform.position.y + heightSlider.value, m_HitTransform.position.z);
             }
              

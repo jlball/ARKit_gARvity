@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rbAttractor: {fileID: 0}
-  forceScale: 40
-  slider: {fileID: 0}
+  gravitationalConstant: 5
+  scaleSlider: {fileID: 0}
 --- !u!114 &114643227274605816
 MonoBehaviour:
   m_ObjectHideFlags: 1

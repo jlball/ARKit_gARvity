@@ -319,10 +319,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BurnUp.cs" />
+    <Compile Include="Assets\Scripts\disableOnFreezeSun.cs" />
     <Compile Include="Assets\Scripts\Gravity.cs" />
     <Compile Include="Assets\Scripts\InitalVelocity.cs" />
     <Compile Include="Assets\Scripts\PlanetSpawnerOnCamera.cs" />
     <Compile Include="Assets\Scripts\SpawnPlanet.cs" />
+    <Compile Include="Assets\transitionToPlay.cs" />
     <Compile Include="Assets\UnityARKitPlugin\ARKitRemote\ARKitFaceTrackingRemoteConnection.cs" />
     <Compile Include="Assets\UnityARKitPlugin\ARKitRemote\ARKitRemoteConnection.cs" />
     <Compile Include="Assets\UnityARKitPlugin\ARKitRemote\ConnectionMessageIds.cs" />
