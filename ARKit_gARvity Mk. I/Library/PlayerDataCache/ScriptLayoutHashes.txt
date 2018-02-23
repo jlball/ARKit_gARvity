@@ -17,7 +17,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 37f72ce84749c8c3f7dc26905e7d1eb5 Assembly-CSharp.dll:.ModeSwitcher
-315020f2ed1d325b938d42d00b846b0b Assembly-CSharp.dll:.PlanetSpawnerOnCamera
+b374295b3238557ef2a354a3a3dc073a Assembly-CSharp.dll:.PlanetSpawnerOnCamera
 516e5cc4558edc3eaf07fa540ce485bf Assembly-CSharp.dll:.ColorPickerTester
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -251,6 +251,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 48b4f2bb90cadfa8931f7d8baac4245e Assembly-CSharp.dll:.ColorSlider
 48aac773de77753c007e6b8e5fa95d61 Assembly-CSharp.dll:.ColorPresets
 2ba36b6a81a4caef27f07fa7511b83ea Assembly-CSharp.dll:UnityEngine.XR.iOS.ARKitFaceTrackingRemoteConnection
+a8746c825c2e4eb7fed798ff5c761631 Assembly-CSharp.dll:.transitionToPlay
 cf4d71a9e7a0fca2485beb58e1bb3066 Assembly-CSharp.dll:.Gravity
 26215f135eeb48d8fa1189498c107f6c Vuforia.UnityExtensions.dll:Vuforia.AnchorBehaviour
 0561521e336e270e6e5a9c61387cb838 Vuforia.UnityExtensions.dll:Vuforia.AnchorInputListenerBehaviour
@@ -326,5 +327,3 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.UnityARCameraNearFar
-a07250bce2b067a21cffd868ba8c8d38 Assembly-CSharp.dll:.disableOnFreezeSun
-a8746c825c2e4eb7fed798ff5c761631 Assembly-CSharp.dll:.transitionToPlay

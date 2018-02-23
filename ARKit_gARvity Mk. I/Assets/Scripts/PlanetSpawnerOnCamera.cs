@@ -14,6 +14,7 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
     public Slider scaleSlider;
     public Text initialVelocityMeter;
     public float meterOffset = 50.0f;
+    public Button freezeSun;
 
     private bool touchLock = false;
     private GameObject planetoid;
@@ -23,13 +24,20 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
     private float touchDeltaX;
     private float initialVelocity;
     private Touch touch;
+    private bool sunLocked = false;
+
+    void Start()
+    {
+        Button btn = freezeSun.GetComponent<Button>();
+        btn.onClick.AddListener(TaskOnClick);
+    }
 
     // Update is called once per frame
     void Update()
     {
 
         //spawnPosition = new Vector3(transform.forward.x, transform.forward.y, transform.forward.z + offset); 
-
+        offset = offset * scaleSlider.value;
         spawnPosition = transform.position + (transform.forward * offset);
 
         //if (Input.GetMouseButtonDown(0))
@@ -37,14 +45,19 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
         //    SpawnPlanetoid(debugVel);
         //}
 
-        if(Input.touchCount > 0) 
+        Debug.Log(sunLocked);
+
+        if ((Input.touchCount > 0) && sunLocked)
         {
 
-            touch = Input.GetTouch(0); 
+            touch = Input.GetTouch(0);
+
 
             switch (touch.phase)
             {
                 case TouchPhase.Began:
+
+                    initialVelocityMeter.gameObject.SetActive(true);
 
                     if (!touchLock)
                     {
@@ -63,9 +76,9 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
                     initialVelocity = Mathf.Sqrt(touchDeltaSum);
 
                     initialVelocityMeter.text = initialVelocity.ToString("0000");
-                    initialVelocityMeter.rectTransform.position = new Vector3(touch.position.x + meterOffset, touch.position.y + meterOffset, initialVelocityMeter.rectTransform.position.z); 
+                    initialVelocityMeter.rectTransform.position = new Vector3(touch.position.x + meterOffset, touch.position.y + meterOffset, initialVelocityMeter.rectTransform.position.z);
 
-                
+
 
                     break;
 
@@ -73,15 +86,17 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
 
                 case TouchPhase.Ended:
 
-                    SpawnPlanetoid(initialVelocity / 250.0f);
+                    SpawnPlanetoid(initialVelocity / 500.0f);
 
                     touchLock = false;
-                 break;
+
+                    initialVelocityMeter.gameObject.SetActive(false);
+                    break;
             }
         }
-	}
+    }
 
-    void SpawnPlanetoid (float initVel)
+    void SpawnPlanetoid(float initVel)
     {
         planetoid = Instantiate(planetoidPrefab, spawnPosition, transform.rotation);
 
@@ -99,5 +114,11 @@ public class PlanetSpawnerOnCamera : MonoBehaviour
 
         planetoid.GetComponent<Gravity>().scaleSlider = scaleSlider;
 
+    }
+
+    void TaskOnClick()
+    {
+        sunLocked = true;
+        //initialVelocityMeter.gameObject.SetActive(true);
     }
 }

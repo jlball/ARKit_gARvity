@@ -319,7 +319,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BurnUp.cs" />
-    <Compile Include="Assets\Scripts\disableOnFreezeSun.cs" />
     <Compile Include="Assets\Scripts\Gravity.cs" />
     <Compile Include="Assets\Scripts\InitalVelocity.cs" />
     <Compile Include="Assets\Scripts\PlanetSpawnerOnCamera.cs" />

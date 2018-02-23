@@ -29,8 +29,7 @@ public class Gravity : MonoBehaviour {
         Vector3 directionOfForce = rbLocal.position - rbAttractor.position;
 
         // Calcualtes the square of the current distance between the two objects
-        rSquared = Vector3.Distance(rbAttractor.position, rbLocal.position);
-        rSquared = rSquared * rSquared;
+        rSquared = Mathf.Pow(Vector3.Distance(rbAttractor.position, rbLocal.position), 2);
         //Debug.Log(rSquared);
 
         //Calculates the numerator of Newton's law of gravitiation (G * M * m)
